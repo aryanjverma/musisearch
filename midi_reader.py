@@ -1,6 +1,9 @@
 import pretty_midi
 import numpy as np
 import fractions
+from typing import Tuple, List
+
+Melody = Tuple[List[int], List[float]]
 def extract_pitches(midi_path):
     midi_data = pretty_midi.PrettyMIDI(midi_path)
 
@@ -30,6 +33,13 @@ def extract_pitches(midi_path):
         notes_and_durations.append((new_notes, round(duration, 3)))
         i = j
     return notes_and_durations
+def find_time_signature(midi_path):
+    midi_data = pretty_midi.PrettyMIDI(midi_path)
+    time_signature_changes = midi_data.time_signature_changes
+    if not time_signature_changes:
+        raise ValueError("No time signature found in MIDI file")
+    # Assuming the first time signature is the one we want
+    return time_signature_changes[0].numerator, time_signature_changes[0].denominator
 def create_midi_file(notes_and_durations, output_path, tempo):
     midi_data = pretty_midi.PrettyMIDI()
     melody_instrument = pretty_midi.Instrument(program=0)
@@ -60,18 +70,7 @@ def extract_melody(notes_and_durations):
             notes.append(int(np.max(pitches)))
             rhythm.append(float(duration))
     return (notes, rhythm)
-def note_to_number(note):
-    
-    note = note.upper()
-    if len(note) < 2:
-        return None
-    elif len(note) == 2:
-        return int(note[1]) * 12 + "C#D#EF#G#A#B".index(note[0].upper()) + 12
-    else:
-        if note[1] == '#':
-            return int(note[2]) * 12 + "C#D#EF#G#A#B".index(note[0].upper()) + 13
-        elif note[1] == 'b':
-            return int(note[2]) * 12 + "C#D#EF#G#A#B".index(note[0].upper())  + 11
+
 
 def ask_melody():
     print("Type in the melody you want to search for:")
@@ -125,23 +124,27 @@ def find_smallest_note(melody, song):
     lcm = np.lcm.reduce(denominators)
     
     return 1 / lcm
-def find_melody(song, melody):
+
+def find_melody_in_song(song, melody):
     smallest_note = find_smallest_note(melody, song)
     
-    song = create_note_array(song, smallest_note)
-    melody = create_note_array(melody, smallest_note)
-    for i in range(len(song) - len(melody) + 1):
-        if are_melodies_similar(song[i:i + len(melody)], melody):
-            return i
+    song_array = create_note_array(song, smallest_note)
+    melody_array = create_note_array(melody, smallest_note)
+    for i in range(len(song_array) - len(melody_array) + 1):
+        if are_melodies_similar(song_array[i:i + len(melody_array)], melody_array):
+            print("Melody found!")
+            return int(i * smallest_note + 0.5)
     return -1
 midi_file = "Happy-Birthday-To-You-1.mid"
 pattern = extract_pitches(midi_file)
-
+time_signature = find_time_signature(midi_file)
 song_melody = extract_melody(pattern)
 print(song_melody)
 user_melody = ask_melody()
 user_melody = np.array(user_melody)
-print(find_melody(song_melody, user_melody))
+index = find_melody_in_song(song_melody, user_melody)
+print(index)
+print(song_melody[index])
 #output_midi_file = "output.mid"
 #tempo = 120
 #create_midi_file(melody, output_midi_file, tempo)
