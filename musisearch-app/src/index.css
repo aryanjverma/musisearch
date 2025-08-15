@@ -1,0 +1,24 @@
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: rgb(184, 184, 184);
+}
+.list-container .list-title{
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.list-container ul{
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+  list-style-type: square;
+  list-style-position: inside;
+}

@@ -2,7 +2,8 @@ import pretty_midi
 import numpy as np
 import fractions
 from typing import Tuple, List
-import melody as md
+import modules.notes as md
+import comparer as cmp
 
 def find_time_signature(midi_path):
     midi_data = pretty_midi.PrettyMIDI(midi_path)
@@ -40,13 +41,6 @@ def ask_melody():
         for index in range(len(pitches)):
             melody.add_note(md.Note(pitches[index], durations[index]))
         return melody
-def are_melodies_similar(melody1, melody2):
-    difference_array = []
-    for index in range(len(melody1)):
-        difference_array.append(melody1[index] - melody2[index])
-    standard_deviation = np.std(difference_array)
-    return standard_deviation < 1
-
 
 def find_melody_in_song(song, melody):
     smallest_note = md.find_smallest_note(song, melody)
@@ -54,7 +48,7 @@ def find_melody_in_song(song, melody):
     song_array = song.create_tqs(smallest_note)
     melody_array = melody.create_tqs(smallest_note)
     for i in range(len(song_array) - len(melody_array) + 1):
-        if are_melodies_similar(song_array[i:i + len(melody_array)], melody_array):
+        if cmp.similarity(song_array[i:i + len(melody_array)], melody_array) > 90:
             print("Melody found!")
             return int(i * smallest_note + 0.5)
     return -1
