@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
 :root{
     --primary-color: #2300B2;
     --secondary-color: #c4b5ff;
-    --font-family: 'Poppins', sans-serif;
+    --third-color: #06001f;
+    --font-family: 'Comfortaa', sans-serif;
 }
 body{
   margin: 0;
@@ -11,6 +12,8 @@ body{
   width: 100%;
   font-family: var(--font-family);
   overflow-x: hidden;
+  font-weight: 400;
+  background-color: #c4b5ff;
 }
 a{
   text-decoration: none;

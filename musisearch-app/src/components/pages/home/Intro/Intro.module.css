@@ -1,0 +1,21 @@
+.container{
+    width: 100%;
+    height: auto;
+}
+h1{
+    font-size: 4vw !important;
+    text-align: left;
+    color: var(--primary-color);
+    margin-left: 2%;
+    font-weight: 600;
+}
+h1 .black{
+    color: black !important;
+}
+h2{
+    font-size: 2vw;
+    text-align: left;
+    color: black;
+    margin-left: 2%;
+    font-weight: 400;
+}
