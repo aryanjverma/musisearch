@@ -8,27 +8,29 @@ nav{
 nav ul {
   list-style-type: none;
   border-bottom: black solid 1px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
   overflow: hidden;
   width: 100%;
   background-color: var(--secondary-color);
 }
 nav ul li {
   float: right;
-  cursor: pointer
+  cursor: pointer;
+  padding: 0.75vw 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 nav ul li a {
   text-decoration: none;
   color: black;
-  padding: 0.75vw 1vw;
   font-size: 2vw;
 }
 nav ul li a:hover {
   transition: background-color 0.3s ease;
   color: var(--primary-color);
+  font-weight: 550;
 }
 .purple{
   color: var(--primary-color) !important;
@@ -40,7 +42,4 @@ nav ul li a:hover {
     float: left;
     font-size: 2vw;
     font-weight: 600;
-}
-.black{
-  color: black;
 }

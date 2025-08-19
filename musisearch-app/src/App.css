@@ -2,8 +2,10 @@
 
 :root{
     --primary-color: #2300B2;
-    --secondary-color: #c4b5ff;
-    --third-color: #06001f;
+    --secondary-color: #D8CEFF;
+    --third-color: #0d0041;
+    --fourth-color: rgb(33, 6, 129);
+    --fifth-color: #8000b2;
     --font-family: 'Comfortaa', sans-serif;
 }
 body{
@@ -13,7 +15,7 @@ body{
   font-family: var(--font-family);
   overflow-x: hidden;
   font-weight: 400;
-  background-color: #c4b5ff;
+  background-color: var(--secondary-color);
 }
 a{
   text-decoration: none;

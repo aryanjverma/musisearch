@@ -8,7 +8,7 @@ function Intro(){
                 <span>musi</span>
                 <span className={styles.black}>search</span>
             </h1>
-            <h2>Search for songs by melody.</h2>
+            <h2>Search for music by melody.</h2>
         </div>
     )
 }

@@ -1,0 +1,13 @@
+.container{
+    width: 96%;
+    margin: 0 auto;
+    background-color: var(--third-color);
+    border-radius: 20px;
+    text-align: left;
+}
+.container h1{
+    font-size: 4vw;
+    padding-top: 2vw;
+    color: white !important;
+    margin-bottom: 1%;
+}
