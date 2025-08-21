@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from "./Input.module.css";
 import { useState } from 'react';
-import { FileContext, FileDispatchContext } from "../FileContext.jsx";
+import { useContext } from 'react';
+import { FileDispatchContext } from "../FileContext.jsx";
 
 function Input(){
+    const dispatchFile = useContext(FileDispatchContext);
     const [inputMode, setInputMode] = useState("MIDI");
     return(
         <div className={styles.container}>

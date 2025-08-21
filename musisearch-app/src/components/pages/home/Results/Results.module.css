@@ -11,3 +11,9 @@
     color: white !important;
     margin-bottom: 1%;
 }
+.container p{
+    font-size: 2vw;
+    color: var(--secondary-color);
+    margin-left: 2%;
+    padding-bottom: 2%;
+}
