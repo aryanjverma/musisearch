@@ -1,3 +1,42 @@
 .container{
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
+    width: 90%;
+    margin: 5%;
+    margin-bottom: 2%;
+    font-family: var(--font-family);
+    padding-bottom: 0.5%;
+    border-radius: 20px;
+}
+.container h1,h2,h3{
+    font: 400 4vw black var(--font-family);
+    margin-left: 2%;
+}
+.container h2{
+    font-size: 2.5vw; 
+}
+.container h3{
+    font-size: 1.5vw;
+}
+.container p{
+    float: right;
+    color: black;
+    font-size: 6vw;
+    margin: 0;
+    margin-top: 3.5%;
+    margin-right: 3.5%;
+}
+.darkGreen{
+    color: rgb(2, 158, 2) !important
+}
+.lightGreen{
+    color: rgb(165, 209, 5) !important
+}
+.yellow{
+    color: rgb(255, 255, 0) !important
+}
+.orange{
+    color: rgb(240, 176, 0) !important
+}
+.red{
+    color: rgb(177, 2, 2) !important
 }

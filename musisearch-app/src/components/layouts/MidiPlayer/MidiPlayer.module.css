@@ -1,24 +1,35 @@
-midi-player{
+.container{
+    border: 1px solid black;
+    background-color: transparent;
+    width: 96%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 2%;
+    margin-top: 0%;
+}
+.container midi-player{
     display: block;
     font-family: var(--font-family);
     font-size: 1.2vw;
-    width: 20%;
-    height: 20%;
-}
-midi-player::part(control-panel){
-    background-color: var(--secondary-color);
-    border: 1px solid black;
     width: 100%;
-    height: 100%;
+    margin: 0;
 }
-midi-player::part(play-button) {
-    background-color: var(--primary-color);
+.container midi-player::part(control-panel){
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 20%;
+    margin-right: 0;
 }
-midi-player::part(play-button):hover{
-    transition: background-color 0.3s ease; 
-    background-color: var(--fourth-color);
-    border-radius: 13px;
+
+.container midi-player::part(play-button) {
+    display: none;
 }
-midi-player::part(slider){
-    accent-color: var(--primary-color);
+
+.container img{
+    width: 3%;
+    padding: 2%;
+    height: auto;
+    cursor: pointer;
 }

@@ -2,8 +2,10 @@
     width: 96%;
     margin: 0 auto;
     background-color: var(--third-color);
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: left;
+    padding-bottom: 1%;
+    margin-bottom: 2%
 }
 .container h1{
     font-size: 4vw;

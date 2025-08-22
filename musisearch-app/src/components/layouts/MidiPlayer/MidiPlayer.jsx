@@ -1,12 +1,24 @@
 import React from 'react';
 import 'html-midi-player';
 import styles from './MidiPlayer.module.css'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import play from '../../../assets/play.svg';
+import pause from '../../../assets/pause.svg';
 
 function MidiPlayer({ midiUrl, startTime=0 }) {
   const playerRef = useRef(null);
-
-  console.log(startTime);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const image = isPlaying ? pause : play
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+    if (isPlaying) {
+      player.start();
+    } else {
+      player.stop();
+    }
+  }, [isPlaying]);
+  
   useEffect(() => {
     const player = playerRef.current;
     if (!player) return;
@@ -28,13 +40,19 @@ function MidiPlayer({ midiUrl, startTime=0 }) {
       const slider = shadow.querySelector("input[type=range]");
 
       if (slider) {
-        slider.style.accentColor = "#2300B2"; // modern browsers
-        slider.style.height = "8px";
+        slider.style.accentColor = "#2300B2"; 
+        slider.style.height = "100%";
         slider.style.borderRadius = "4px";
+        slider.style.backgroundColor = "transparent";
       }
   }, []);
   return (
-      <midi-player ref={playerRef} src={midiUrl} sound-font></midi-player>
+      <div className={styles.container}>
+        <img src={image} onClick={()=>{
+          setIsPlaying(!isPlaying);
+        }} title ={isPlaying ? "Pause" : "Play"}/>
+        <midi-player ref={playerRef} src={midiUrl} sound-font></midi-player>
+      </div>
   );
 }
 export default MidiPlayer;
