@@ -58,6 +58,7 @@
 .container form input[type="file"]::file-selector-button:hover{
     transition: background-color 0.3s ease;
     background-color: var(--fourth-color);
+
 }
 .container form input[type="file"]{
     font: 400 1.2vw var(--font-family);

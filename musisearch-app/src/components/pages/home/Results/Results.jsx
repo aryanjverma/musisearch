@@ -9,12 +9,12 @@ import Card from './Card/Card.jsx';
 function Results(){
     const file = useContext(FileContext);
     console.log(file);
-    const [results, setResults] = useState([{title:"Happy Birthday", creator:"Traditional", accuracy: 75, midiUrl: "/HappyBDAY.mid",timestamp:6}]);
+    const [results, setResults] = useState([{title:"Happy Birthday", creator:"Traditional", accuracy: 75, midiUrl: "/HappyBDAY.mid",timestamp:6}, {title:"Happy Birthday", creator:"Traditional", accuracy: 75, midiUrl: "/HappyBDAY.mid",timestamp:6}]);
     return(
         <div className={styles.container}>
             <h1>Results...</h1>
             {file === null ? (<p>Submit a melody above.</p>) :
-            (results.length > 0 ? results.map((result,index)=>(<Card cardKey={index} result={result} />)) :
+            (results.length > 0 ? results.map((result,index)=>(<Card id={index} result={result} />)) :
                 (<p>No results found.</p>))
             }
         </div>

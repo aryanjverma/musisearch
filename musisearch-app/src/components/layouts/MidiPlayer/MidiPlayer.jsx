@@ -35,16 +35,26 @@ function MidiPlayer({ midiUrl, startTime=0 }) {
   }, [startTime, midiUrl]);
 
   useEffect(() => {
-      const player = document.querySelector("midi-player");
+    const player = playerRef.current;
+    if (!player) return;
+    const updateSliderStyle = () => {
       const shadow = player.shadowRoot;
+      if (!shadow) return;
       const slider = shadow.querySelector("input[type=range]");
-
       if (slider) {
-        slider.style.accentColor = "#2300B2"; 
+        slider.style.accentColor = "#2300B2";
         slider.style.height = "100%";
         slider.style.borderRadius = "4px";
         slider.style.backgroundColor = "transparent";
       }
+    };
+
+    updateSliderStyle();
+    player.addEventListener("load", updateSliderStyle);
+
+    return () => {
+      player.removeEventListener("load", updateSliderStyle);
+    };
   }, []);
   return (
       <div className={styles.container}>

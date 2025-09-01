@@ -6,7 +6,7 @@ import Input from "./Input/Input.jsx";
 import Results from "./Results/Results.jsx";
 
 import { FileContext, FileDispatchContext } from "./FileContext.jsx";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 function Home() {
     const [file, dispatchFile] = useReducer((state, action) => {
