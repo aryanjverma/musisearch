@@ -78,8 +78,9 @@ musisearch/
 - **Frontend:** React, Vite, html-midi-player
 - **Backend:** FastAPI, pretty_midi, numpy
 
-## License
+## 📜 License
 
 MIT License
-
+### Note: ChatGPT was used to create parts of the README 
 ---
+
